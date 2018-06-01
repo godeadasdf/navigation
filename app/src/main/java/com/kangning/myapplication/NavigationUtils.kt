@@ -26,7 +26,6 @@ object NavigationUtils {
 
 
     fun goToNaviActivity(mapType: String,
-                         address: String,
                          lat: Double,
                          lon: Double,
                          context: Context): Boolean {
@@ -37,7 +36,7 @@ object NavigationUtils {
         val naviIntent: Intent
         when (mapType) {
             NAVIGATION_AMAP -> {
-                val uri = "androidamap://route/plan/?dlat=$lat&dlon=$lon&dname=$address"
+                val uri = "androidamap://route/plan/?dlat=$lat&dlon=$lon"
                 naviIntent = Intent("android.intent.action.VIEW", android.net.Uri.parse(uri))
                 naviIntent.`package` = "com.autonavi.minimap"
                 context.startActivity(naviIntent)
@@ -45,15 +44,15 @@ object NavigationUtils {
 
             NAVIGATION_TECENT -> {
                 naviIntent = Intent("android.intent.action.VIEW",
-                        android.net.Uri.parse("qqmap://map/routeplan?type=drive&to=" + address + "&tocoord=" + lat + "," + lon + "&policy=0&referer=" + context.packageName))
+                        android.net.Uri.parse("qqmap://map/routeplan?type=drive&tocoord=" + lat + "," + lon + "&policy=0&referer=" + context.packageName))
 
                 context.startActivity(naviIntent)
             }
 
             NAVIGATION_BAIDU -> {
-                val doubles = gcj02_To_Bd09(lat, lon)
+                val coords = gcj02_To_Bd09(lat, lon)
                 //启动路径规划页面
-                naviIntent = Intent("android.intent.action.VIEW", android.net.Uri.parse("baidumap://map/direction?origin=" + doubles[0] + "," + doubles[1] + "&destination=" + address + "&mode=driving"))
+                naviIntent = Intent("android.intent.action.VIEW", android.net.Uri.parse("baidumap://map/navi?location=${coords[0]},${coords[1]}"))
                 context.startActivity(naviIntent)
             }
             else -> {

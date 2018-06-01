@@ -10,25 +10,31 @@
         android:id="@+id/btn_click1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="高德" />
+        android:layout_marginStart="8dp"
+        android:text="高德"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
     <Button
         android:id="@+id/btn_click2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:text="腾讯"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="48dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_click1" />
 
 
     <Button
         android:id="@+id/btn_click3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:text="百度"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="96dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_click2" />
 
 
 </android.support.constraint.ConstraintLayout>
